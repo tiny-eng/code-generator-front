@@ -1,25 +1,83 @@
 import React, { useState } from 'react';
+import '../../Styles/Signup.css';
 
-const SignUp = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+const Signup = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [nickname, setNickname] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    // Add your signup logic here
+    console.log('Email:', email);
+    console.log('Password:', password);
+    console.log('Nickname:', nickname);
 
+    try {
+        const response = await fetch('http://localhost: 8000/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password, nickname })
+        });
 
-    };
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data.message);
+        } else {
+            const errorData = await response.json();
+            console.error('Error:', errorData.detail);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+  };
 
-    return (
-        <div>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSubmit}>
-                <input type='email' placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-                <input type='password' placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-                <button type='submit'>Sign Up</button>
-            </form>
+  return (
+    <div className="signup-container">
+      <form className="signup-form" onSubmit={handleSubmit}>
+        <h1 className="signup-title">CodeGen</h1>
+        <h1 className="signup-subtitle">Already have an account? <a href='signin'>Sign In</a></h1>
+        <h1 className="input-title">Email</h1>
+        <input
+          type="email"
+          placeholder="Email address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <h1 className="input-title">Password</h1>
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <h1 className="input-title">Nickname</h1>
+        <input
+          type="text"
+          placeholder="What should we call you?"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+          required
+        />
+        <button type="submit" className="signup-button">
+          Sign Up
+        </button>
+        <div className="or-divider">Or</div>
+        <div className="social-buttons">
+            <button className="google-button">
+                Sign up with Google
+            </button>
         </div>
-    )
+        <div className="terms-and-privacy">
+            By signing up, you agree to the <a href="#">Terms and Conditions</a> and <a href="#">Privacy Policy</a>.
+        </div>
+      </form>
+    </div>
+  );
 };
 
-export default SignUp;
+export default Signup;
