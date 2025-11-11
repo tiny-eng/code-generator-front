@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../../Styles/Signup.css';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [nickname, setNickname] = useState('');
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,7 +17,7 @@ const Signup = () => {
     console.log('Nickname:', nickname);
 
     try {
-        const response = await fetch('http://localhost: 8000/signup', {
+        const response = await fetch('http://localhost:8000/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -25,12 +28,16 @@ const Signup = () => {
         if (response.ok) {
             const data = await response.json();
             console.log(data.message);
+            alert("Success: " + "Signup successful!");
+            navigate('/signin');
         } else {
             const errorData = await response.json();
             console.error('Error:', errorData.detail);
+            alert("Error: " + errorData.detail);
         }
     } catch (error) {
-        console.error('Error:', error);
+      console.error('Network or server error:', error);
+      alert('Something went wrong. Please try again.');
     }
   };
 
