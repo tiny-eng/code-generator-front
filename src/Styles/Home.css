@@ -1,0 +1,55 @@
+.home-section {
+    height: 84vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: beige;
+}
+
+.container {
+    width: 80%; /* Adjust the width as needed */
+}
+
+.text-display {
+    width: 100%;
+    margin-bottom: 20px;
+    height: 70vh;
+}
+
+.pair-container {
+    margin-bottom: 10px; /* Space between pairs */
+}
+
+.prompt, .code {
+    width: 100%; /* Ensure both prompt and answer take full width */
+    height: 60px; /* Set a fixed height */
+    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-x: hidden; /* Hide horizontal scrolling */
+    text-align: left; /* Align text to the left */
+    margin-bottom: 5px; /* Space between prompt and answer */
+    padding: 5px; /* Optional padding for better readability */
+    white-space: pre-wrap; /* Preserve whitespace and wrap text */
+    tab-size: 4; /* Set tab size for indentation */
+}
+
+.prompt {
+    text-align: right; 
+    background-color: #f9f9f9; 
+}
+
+.code {
+    text-align: left; 
+    margin-left: 20px; 
+    background-color: #e9e9e9;
+}
+
+.prompt-input {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 100px; /* Adjust height as needed */
+    font-size: 2rem;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../../Styles/Signup.css';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Signin = () => {
   const [email, setEmail] = useState('');
@@ -43,8 +44,8 @@ const Signin = () => {
   return (
     <div className="signup-container">
       <form className="signup-form" onSubmit={handleSubmit}>
-        <h1 className="signup-title">CodeGen</h1>
-        <h1 className="signup-subtitle">Don't you have an account? <a href='signup'>Sign Up</a></h1>
+        <Link to="/"><h1 className="signup-title">CodeGen</h1></Link>
+        <h1 className="signup-subtitle">Don't you have an account? <Link to='/signup'>Sign Up</Link></h1>
         <h1 className="input-title">Email</h1>
         <input
           type="email"
