@@ -12,12 +12,14 @@
     font-size: 2.5rem;
     margin-bottom: 2rem;
     text-align: center;
+    text-decoration: none;
 }
 
 .signup-subtitle {
     font-size: 0.8rem;
     margin-bottom: 2rem;   
-    text-align: center; 
+    text-align: center;
+    text-decoration: none; 
 }
 
 .input-title {
