@@ -12,15 +12,15 @@ function Home() {
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      if (prompt.trim()) {
-        const code = generateCode(prompt);
-        setPairs([...pairs, {prompt, code}]);
-        setPrompt("");
+    // if (e.key === "Enter") {
+    //   e.preventDefault();
+    //   if (prompt.trim()) {
+    //     const code = generateCode(prompt);
+    //     setPairs([...pairs, {prompt, code}]);
+    //     setPrompt("");
 
-      }
-    }
+    //   }
+    // }
   };
 
   return (
